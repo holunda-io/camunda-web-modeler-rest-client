@@ -1,4 +1,4 @@
-# Camunda WebModeler Client
+# Camunda Web Modeler Rest Client
 
 This library aims to provide a REST client for accessing the Camunda 8 Web Modeler REST APIs from a java
 application.
