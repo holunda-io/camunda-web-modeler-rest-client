@@ -126,6 +126,20 @@
   <build>
     <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
 
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <configuration>
+            <gitFlowConfig>
+              <productionBranch>main</productionBranch>
+            </gitFlowConfig>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
