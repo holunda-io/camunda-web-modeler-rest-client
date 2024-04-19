@@ -13,8 +13,8 @@ First import the dependency:
 
 <dependency>
     <groupId>io.holunda</groupId>
-    <artifactId>camunda-webmodeler-rest-client</artifactId>
-    <version>${camunda-webmodeler-version}</version>
+    <artifactId>camunda-web-modeler-rest-client</artifactId>
+    <version>${camunda-web-modeler-rest-client.version}</version>
 </dependency>
 ```
 
