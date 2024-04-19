@@ -3,7 +3,7 @@ name: Produces and releases artifacts
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
