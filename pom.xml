@@ -13,7 +13,7 @@
   <artifactId>camunda-web-modeler-rest-client</artifactId>
   <version>0.0.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
-  <description>kotlin-lib</description>
+  <description>A REST client to interact with the API of the Web Modeler of Camunda 8</description>
   <url>https://github.com/holunda-io/camunda-web-modeler-rest-client</url>
 
   <properties>
