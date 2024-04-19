@@ -9,17 +9,22 @@
     <relativePath/>
   </parent>
 
-  <groupId>BASE_GROUP_ID</groupId>
-  <artifactId>BASE_ARTIFACT_ID</artifactId>
+  <groupId>io.holunda</groupId>
+  <artifactId>camunda-webmodeler-rest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
-  <description>BASE_DESCRIPTION</description>
-  <url>https://github.com/GITHUB_ORGANIZATION/GITHUB_REPOSITORY/</url>
+  <description>kotlin-lib</description>
+  <url>https://github.com/holunda-io/kotlin-lib/</url>
 
   <properties>
     <!-- TEST -->
     <mockito.version>5.3.1</mockito.version>
     <assertj.version>3.25.3</assertj.version>
+    <jersey.version>3.1.5</jersey.version>
+    <jackson.version>2.17.0</jackson.version>
+    <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+    <jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
+    <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
   </properties>
 
   <dependencies>
@@ -36,6 +41,56 @@
       <groupId>io.github.microutils</groupId>
       <artifactId>kotlin-logging-jvm</artifactId>
       <version>${kotlin-logging.version}</version>
+    </dependency>
+
+    <!-- JACKSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- JERSEY -->
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-multipart</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <version>${jakarta.ws.rs-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>${jakarta.annotation-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>${jackson-databind-nullable.version}</version>
     </dependency>
 
     <!-- TEST -->
@@ -88,6 +143,36 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/camunda-webmodeler-api.json</inputSpec>
+              <generatorName>java</generatorName>
+              <output>${project.build.directory}/generated-sources/openapi</output>
+              <generateApiTests>false</generateApiTests>
+              <generateModelTests>false</generateModelTests>
+              <generateApiDocumentation>false</generateApiDocumentation>
+              <generateModelDocumentation>false</generateModelDocumentation>
+              <configOptions>
+                <library>jersey3</library>
+                <sourceFolder>src/gen/java/main</sourceFolder>
+                <packageName>io.holunda.webmodeler.rest.client</packageName>
+                <dateLibrary>java8</dateLibrary>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -99,9 +184,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</connection>
-    <url>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</url>
-    <developerConnection>scm:git:git@github.com:GITHUB_ORGANIZATION/GITHUB_REPOSITORY.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -118,22 +203,19 @@
 
   <developers>
     <developer>
-      <id>jangalinski</id>
-      <name>Jan Galinski</name>
+      <id>MichaelVonB</id>
+      <name>Michael von Bargen</name>
       <roles>
-        <role>Product Owner</role>
         <role>Developer</role>
       </roles>
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>
     </developer>
     <developer>
-      <id>zambrovski</id>
-      <name>Simon Zambrovski</name>
+      <id>christian-maschmann</id>
+      <name>Christian Maschmann</name>
       <roles>
-        <role>Product Owner</role>
         <role>Developer</role>
-        <role>Toolsmith</role>
       </roles>
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>
