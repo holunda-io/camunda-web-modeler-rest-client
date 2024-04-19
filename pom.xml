@@ -10,11 +10,11 @@
   </parent>
 
   <groupId>io.holunda</groupId>
-  <artifactId>camunda-webmodeler-rest</artifactId>
-  <version>0.0.1</version>
+  <artifactId>camunda-web-modeler-rest-client</artifactId>
+  <version>0.1.0</version>
   <name>${project.artifactId}</name>
-  <description>kotlin-lib</description>
-  <url>https://github.com/holunda-io/kotlin-lib/</url>
+  <description>A REST client to interact with the API of the Web Modeler of Camunda 8</description>
+  <url>https://github.com/holunda-io/camunda-web-modeler-rest-client</url>
 
   <properties>
     <!-- TEST -->
@@ -184,9 +184,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</connection>
-    <url>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</url>
-    <developerConnection>scm:git:git@github.com:holunda-io/camunda-web-modeler-java-client.git</developerConnection>
+    <connection>scm:git:git@github.com:holunda-io/camunda-web-modeler-rest-client.git</connection>
+    <url>scm:git:git@github.com:holunda-io/camunda-web-modeler-rest-client.git</url>
+    <developerConnection>scm:git:git@github.com:holunda-io/camunda-web-modeler-rest-client.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
